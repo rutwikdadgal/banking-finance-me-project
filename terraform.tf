@@ -12,7 +12,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "test-server" {
-  ami           = "ami-0b6581fde9e6e7779"
+  ami           = "ami-02a2af70a66af6dfb"
   instance_type = "t2.micro"
   
   tags = {
@@ -25,7 +25,7 @@ resource "aws_instance" "test-server" {
 }
 
 resource "aws_instance" "prod-server" {
-  ami           = "ami-0b6581fde9e6e7779"  
+  ami           = "ami-02a2af70a66af6dfb"  
   instance_type = "t2.micro"
   
   tags = {
