@@ -38,6 +38,8 @@ resource "null_resource" "configure-ansible-hosts" {
       echo "${aws_instance.test-server.public_ip}" | sudo tee -a /etc/ansible/hosts
       echo "${aws_instance.prod-server.public_ip}" | sudo tee -a /etc/ansible/hosts
     EOT
+    
+    interpreter = ["/bin/bash", "-c"]
     }
 }
 
