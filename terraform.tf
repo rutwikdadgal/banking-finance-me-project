@@ -34,11 +34,10 @@ resource "null_resource" "configure-ansible-hosts" {
 
   provisioner "local-exec" {
     command = <<EOT
-      sudo mkdir  /etc/ansible
+      sudo mkdir -p /etc/ansible
       echo "${aws_instance.test-server.public_ip}" | sudo tee -a /etc/ansible/hosts
       echo "${aws_instance.prod-server.public_ip}" | sudo tee -a /etc/ansible/hosts
     EOT
-  }
 }
 
 
