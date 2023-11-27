@@ -19,7 +19,7 @@ resource "aws_instance" "test-server" {
     Name = "test-server"
   }
 
-  provisioner "exec" {
+  provisioner "local-exec" {
     command = "echo ${aws_instance.test-server.public_ip} >> /etc/ansible/hosts"
   }
 }
@@ -32,7 +32,7 @@ resource "aws_instance" "prod-server" {
     Name = "prod-server"
   }
 
-  provisioner "exec" {
+  provisioner "local-exec" {
     command = "echo ${aws_instance.prod-server.public_ip} >> /etc/ansible/hosts"
   }
 }
