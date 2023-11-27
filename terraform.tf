@@ -46,7 +46,3 @@ resource "null_resource" "configure-ansible-hosts" {
   }
 }
 
-    }
-}
-
-
