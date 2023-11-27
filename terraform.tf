@@ -25,7 +25,7 @@ resource "aws_instance" "test-server" {
 }
 
 resource "aws_instance" "prod-server" {
-  ami           = ""  
+  ami           = "ami-0b6581fde9e6e7779"  
   instance_type = "t2.micro"
   
   tags = {
