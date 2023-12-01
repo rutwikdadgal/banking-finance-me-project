@@ -2,7 +2,7 @@
   hosts: test-server
   become: true
   remote_user: ubuntu 
-  connection: ssh
+  become_user: root
   tasks: 
     - name: Updating apt
       command: sudo apt-get update
