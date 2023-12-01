@@ -1,16 +1,22 @@
-- name : Configure Docker 
-  hosts : test-server
+- name: Configure Docker 
+  hosts: test-server
   become: true
-  connection : ssh
-  tasks : 
-  - name: updating apt
-    command : sudo apt-get update
+  connection: ssh
+  tasks: 
+    - name: Updating apt
+      command: sudo apt-get update
 
-  - name : Install Docker
-    command : sudo apt-get install -y docker.io
+    - name: Install Docker
+      command: sudo apt-get install -y docker.io
+      ignore_errors: yes
 
-  - name : Start Docker Service
-    command : sudo systemctl start docker
+    - name: Start Docker Service
+      command: sudo systemctl start docker
+      ignore_errors: yes
 
-  - name: Deploy Docker Container
-    command: docker run -itd -p 8084:8081 rutwikd/finance-me:1.0
+    - name: Allow any host key
+      become: true
+      command: ssh-keyscan -H test-server >> ~/.ssh/known_hosts
+
+    - name: Deploy Docker Container
+      command: docker run -itd -p 8084:8081 rutwikd/finance-me:1.0
