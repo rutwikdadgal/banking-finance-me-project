@@ -14,7 +14,7 @@ provider "aws" {
 resource "aws_instance" "test-server" {
   ami           = "ami-02a2af70a66af6dfb"
   instance_type = "t2.micro"
-   key_name      = "devops-key"
+  key_name      = "devops-key"
   
   tags = {
     Name = "test-server"
@@ -24,12 +24,11 @@ resource "aws_instance" "test-server" {
 resource "aws_instance" "prod-server" {
   ami           = "ami-02a2af70a66af6dfb"  
   instance_type = "t2.micro"
-   key_name      = "devops-key"
+  key_name      = "devops-key"
   tags = {
     Name = "prod-server"
   }
 }
- 
-}
+
 
 
