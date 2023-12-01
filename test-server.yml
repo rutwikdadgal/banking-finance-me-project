@@ -1,6 +1,7 @@
 - name: Configure Docker 
   hosts: test-server
   become: true
+  remote_user: ubuntu 
   connection: ssh
   tasks: 
     - name: Updating apt
