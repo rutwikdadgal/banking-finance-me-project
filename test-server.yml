@@ -15,9 +15,5 @@
       command: sudo systemctl start docker
       ignore_errors: yes
 
-    - name: Allow any host key
-      become: true
-      command: ssh-keyscan -H test-server >> ~/.ssh/known_hosts
-
     - name: Deploy Docker Container
       command: docker run -itd -p 8084:8081 rutwikd/finance-me:1.0
