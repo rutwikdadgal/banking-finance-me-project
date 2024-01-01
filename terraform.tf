@@ -89,10 +89,3 @@ output "prod_server_ip" {
   value = aws_instance.prod_server.public_ip
 }
 
-resource "null_resource" "ansible_dependency" {
-  depends_on = [aws_instance.test_server, aws_instance.prod_server]
-
-  provisioner "local-exec" {
-    command = "echo 'Ansible dependencies are ready'"
-  }
-}
