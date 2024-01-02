@@ -26,7 +26,7 @@ resource "aws_internet_gateway" "gw" {
 resource "aws_subnet" "main_subnet" {
   vpc_id     = aws_vpc.main_vpc.id
   cidr_block = "10.0.1.0/24"
-
+  map_public_ip_on_launch = true
   availability_zone = "ap-south-1a"  # Added availability_zone parameter
 
   tags = {
@@ -62,7 +62,7 @@ resource "aws_instance" "test_server" {
   ami           = "ami-02a2af70a66af6dfb"
   instance_type = "t2.micro"
   key_name      = "devops-key"
-  
+  associate_public_ip_address = true
   subnet_id = aws_subnet.main_subnet.id
 
   tags = {
@@ -75,17 +75,17 @@ resource "aws_instance" "prod_server" {
   instance_type = "t2.micro"
   key_name      = "devops-key"
   subnet_id     = aws_subnet.main_subnet.id
-
+  associate_public_ip_address = true
   tags = {
     Name = "prod-server"
   }
 }
 
-output "test_server_ip" {
-  value = aws_instance.test_server.public_ip
+output "prod_server_public_ip" {
+  value = aws_instance.prod_server.public_ip
 }
 
-output "prod_server_ip" {
-  value = aws_instance.prod_server.public_ip
+output "test_server_public_ip" {
+  value = aws_instance.test_server.public_ip
 }
 
